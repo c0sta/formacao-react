@@ -30,8 +30,7 @@
             
             <tbody>
                 ${ 
-                    modelo.negociacoes.map((n) => {
-                        return `
+                    modelo.negociacoes.map( n => `
                             <tr>
                                 <td>${DateHelper.dateToText(n.data)}</td>
                                 <td>${n.quantidade}</td>
@@ -39,12 +38,19 @@
                                 <td>${n.volume}</td>
 
                             </tr>
-                        `
-                    }).join('')
+                        `).join('')
                 }
             </tbody>
             
             <tfoot>
+                <td colspan="3"></td>
+                
+                <td>
+                ${modelo.negociacoes.reduce( (total, n) => {
+                        return total + n.volume
+                    }, 0.0)
+                }
+                </td>
             </tfoot>
         </table>
 

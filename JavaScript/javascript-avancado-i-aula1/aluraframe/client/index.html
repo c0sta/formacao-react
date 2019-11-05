@@ -10,7 +10,9 @@
 <body class="container">
     
     <h1 class="text-center">Negociações</h1>
-    
+
+    <div id="mensagemView"></div>
+
     <form class="form" onsubmit="negociacaoController.adiciona(event)">
         
         <div class="form-group">
@@ -43,7 +45,7 @@
     <br>
     
     <div id="negociacoesView">
-        
+
     </div>
     
     <!-- IMPORTING FILES -->
@@ -52,6 +54,9 @@
     <script src="js/app/helpers/DateHelper.js"></script>
     <script src="js/app/models/ListaNegociacoes.js"></script>
     <script src="js/app/views/NegociacoesView.js"></script>
+    <script src="js/app/models/Mensagem.js"></script>
+    <script src="js/app/views/MensagemView.js"></script>
+
 
     <!--INSTANCIANDO CLASSES-->
     <script>
