@@ -3,19 +3,11 @@
  */
 
 
- class NegociacoesView{
+ class NegociacoesView extends View{ 
     constructor(elemento){
-        this._elemento = elemento;
+        super(elemento)
     }
 
-    update(modelo){
-        /**
-         * innerHTML faz a conversão da nossa String retornada pelo template 
-         * em marcação HTML
-         */
-        this._elemento.innerHTML = this._template(modelo)
-    }
-    
     _template(modelo){
         return `
         <table class="table table-hover table-bordered">
