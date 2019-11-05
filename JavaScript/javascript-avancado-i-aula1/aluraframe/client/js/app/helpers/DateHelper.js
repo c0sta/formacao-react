@@ -31,9 +31,13 @@ class DateHelper{
         // Expressão regular p/ identificar data no formato 'xxxx-xx-xx'
         // \d : Diz que queremos pegar digitos numericos
         // {n} : Quantidade de digitos
+        // O ^ indica "começando com " e o $ "terminando com".
+
+
+        
         // Fail Fast concept
         // Testa a ExpReg e se der False retorna o erro logo de cara
-        if( ! /\d{4}-\d{2}-\d{2}/.test(texto) ) 
+        if( ! /^\d{4}-\d{2}-\d{2}$/.test(texto) ) 
             throw new Error('Formato aaaa-mm-dd obrigatório!') 
         
         return `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`

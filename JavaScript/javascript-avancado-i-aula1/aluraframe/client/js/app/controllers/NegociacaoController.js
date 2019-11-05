@@ -17,11 +17,9 @@ class NegociacaoController {
 
         event.preventDefault()
 
-
         this._listaNegociacoes.adiciona(this._criaNegociacao())
         this._limpaFormulario()
 
-        console.log(this._listaNegociacoes.negociacoes)
     }
 
     /**
