@@ -5,7 +5,7 @@ class DateHelper{
     
     /**
      *  Métodos estáticos podem ser invocados DIRETAMENTE nas classes
-     *  sem ser necessário instanciar 
+     *  sem ser necessário intanciar a classe ha quem pertencem 
      */
 
      constructor(){
@@ -24,7 +24,15 @@ class DateHelper{
         
         */
         // Função que subtrai 1 do Mês, pois o mês nesse caso irá de 0 a 11  
-        return new Date(...texto.split('-').map( (item, indice) => indice === 1? parseInt(item) - 1 : item))
+        console.log("TEXTTODATE" + texto)
+        
+        // Fail Fast concept
+        // Testa a ExpReg e se der False retorna o erro logo de cara
+        if( ! /^\d{4}-\d{2}-\d{2}$/.test(texto) ) 
+        
+            throw new Error('Formato aaaa-mm-dd obrigatório!') 
+        
+        return new Date(...texto.split('-').map( (item, indice) => indice === 1? item - 1 : item))
     }
 
     static dateToText(data){
@@ -33,12 +41,9 @@ class DateHelper{
         // {n} : Quantidade de digitos
         // O ^ indica "começando com " e o $ "terminando com".
 
-
+        console.log("Inside DateToText" + data)
         
-        // Fail Fast concept
-        // Testa a ExpReg e se der False retorna o erro logo de cara
-        if( ! /^\d{4}-\d{2}-\d{2}$/.test(texto) ) 
-            throw new Error('Formato aaaa-mm-dd obrigatório!') 
+     
         
         return `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`
     }
