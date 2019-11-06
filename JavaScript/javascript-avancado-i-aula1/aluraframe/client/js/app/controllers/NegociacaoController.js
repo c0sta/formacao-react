@@ -11,25 +11,27 @@ class NegociacaoController {
         this._inputData = $('#data')
         this._inputValor = $('#valor')
 
-        let self = this
-        
-        this._listaNegociacoes = ProxyFactory.create(
-            new ListaNegociacoes(), ['adiciona', 'esvazia'], 
-                model => this._negociacoesView.update(model) )
+        this._negociacoesView = new NegociacoesView($('#negociacoesView'))
 
+        this._listaNegociacoes = new Bind(
+            new ListaNegociacoes(),
+            this._negociacoesView,
+            ['adiciona','esvazia']
+        
+        )
 
         /** 
          * Passamos como parametro o elemento onde 
          * nossa view será renderizada no HTML
          * 
-         * */ 
-        this._negociacoesView = new NegociacoesView($('#negociacoesView'))
-        this._negociacoesView.update(this._listaNegociacoes)
-   
-        this._mensagem = ProxyFactory.create( 
-            new Mensagem(), ['texto'], model => this._mensagemView.update(model)
-            )
+         * */
         this._mensagemView = new MensagemView($('#mensagemView'))
+        this._mensagem = new Bind( 
+            new Mensagem(),
+            this._mensagemView,
+            ['texto']
+            ) 
+       
     }
     
     adiciona(event){
@@ -72,7 +74,6 @@ class NegociacaoController {
         this._listaNegociacoes.esvazia() 
 
         this._mensagem.texto = 'Suas negociações foram apagadas com sucesso :)'
-        this._mensagemView.update(this._mensagem)
     }
 
 
