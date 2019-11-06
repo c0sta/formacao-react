@@ -15,6 +15,6 @@ class Mensagem {
 
         this._texto = texto
     
-    }
+    }  
 }
 

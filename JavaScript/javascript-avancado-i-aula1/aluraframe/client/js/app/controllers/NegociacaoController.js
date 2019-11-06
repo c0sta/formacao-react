@@ -11,7 +11,12 @@ class NegociacaoController {
         this._inputData = $('#data')
         this._inputValor = $('#valor')
         
-        this._listaNegociacoes = new ListaNegociacoes()
+        this._listaNegociacoes = new ListaNegociacoes( 
+            model => {
+                console.log(this)
+                this._negociacoesView.update(model)
+        })
+
         /** 
          * Passamos como parametro o elemento onde 
          * nossa view será renderizada no HTML
@@ -30,7 +35,6 @@ class NegociacaoController {
         event.preventDefault()
 
         this._listaNegociacoes.adiciona(this._criaNegociacao())
-        this._negociacoesView.update(this._listaNegociacoes)
 
         this._mensagem.texto = 'Negociação adicionada com sucesso'
         this._mensagemView.update(this._mensagem)
@@ -64,6 +68,13 @@ class NegociacaoController {
             this._inputValor.value
         
             )
+    }
+
+    esvazia(){
+        this._listaNegociacoes.esvazia() 
+
+        this._mensagem.texto = 'Suas negociações foram apagadas com sucesso :)'
+        this._mensagemView.update(this._mensagem)
     }
 
 

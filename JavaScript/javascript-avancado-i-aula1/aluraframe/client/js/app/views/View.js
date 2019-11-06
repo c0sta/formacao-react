@@ -3,12 +3,16 @@ class View{
         this._elemento = elemento
     }
 
-
-    _template(model){
-        
+    /**
+     * Para alertar os programadores que este método 
+     * deve ser implementado na classe filha que herdar
+     * de View
+     */
+    template(model){
+        throw new Error('O método template deve ser implementado')
     }
 
     update(model){
-        this._elemento.innerHTML = this._template(model)
+        this._elemento.innerHTML = this.template(model)
     }
 }

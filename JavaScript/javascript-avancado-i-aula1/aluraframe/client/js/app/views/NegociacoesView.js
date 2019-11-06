@@ -8,7 +8,7 @@
         super(elemento)
     }
 
-    _template(modelo){
+    template(modelo){
         return `
         <table class="table table-hover table-bordered">
             <thead>
@@ -38,7 +38,8 @@
                 <td colspan="3"></td>
                 
                 <td>
-                ${modelo.negociacoes.reduce( (total, n) => {
+                ${
+                    modelo.negociacoes.reduce( (total, n) => {
                         return total + n.volume
                     }, 0.0)
                 }
