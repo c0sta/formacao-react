@@ -43,47 +43,6 @@ class NegociacaoController {
 
     }
 
-    importaNegociacoes(){
-        // Requisão com AJAX
-        let xhr = new XMLHttpRequest()
-        
-        xhr.open('GET', 'negociacoes/semana')
-        
-        
-        xhr.onreadystatechange = () => {
-            /* Configuraçṍes */
-            /*
-             * 0: requisição não iniciada
-             * 1: conexão com o servidor estabelecido
-             * 2: requisição recebida
-             * 3: processando requisição
-             * 4: requisição concluida e a resposta está pronta
-             */
-
-            if(xhr.readyState === 4){
-                
-                if(xhr.status === 200){
-                    console.log('deu certo')
-
-                    JSON.parse(xhr.responseText)
-                        .map( objeto => new Negociacao(
-                            new Date(objeto.data),
-                            objeto.quantidade,
-                            objeto.valor
-                            ))
-                        .forEach(negociacao => {
-                            this._listaNegociacoes.adiciona(negociacao)
-                            console.log(negociacao)
-                        })
-                }else {
-                    console.log('Deu ruim')
-                    this._mensagem.texto = 'Não foi possivel obter negociações da semana'
-                }
-        }        
-        //alert('certin')
-    }
-    xhr.send()
-}
 
     /**
      *  O underline em métodos significa
@@ -117,6 +76,47 @@ class NegociacaoController {
 
         this._mensagem.texto = 'Suas negociações foram apagadas com sucesso :)'
     }
+
+    importaNegociacoes(){
+
+        let service = new NegociacaoService()
+
+        Promise.all([
+            service.obterNegociacaoDaSemana(), 
+            service.obterNegociacaoDaSemanaAnterior(), service.obterNegociacaoDaSemanaRetrasada()]
+            ).then(
+                negociacoes => {
+                   negociacoes
+                   .reduce( (arrayAchatado, array) => arrayAchatado.concat(array), [] )
+                   .forEach( negociacao => this._listaNegociacoes.adiciona(negociacao))
+                   this._mensagem.texto = 'Negociações importadas com sucesso'
+                })
+                .catch(
+                error => this._mensagem.texto = error
+                )
+
+    }
+/*
+        service.obterNegociacaoDaSemana()
+        .then( negociacoes => negociacoes.forEach( negociacao => {            this._listaNegociacoes.adiciona(negociacao) 
+            this._mensagem = 'Negociações da semana obtida com sucesso'
+        }))
+        .catch( err => this._mensagem.texto = err ) 
+        
+
+        service.obterNegociacaoDaSemanaAnterior()
+        .then( negociacoes => negociacoes.forEach( negociacao => {            this._listaNegociacoes.adiciona(negociacao) 
+            this._mensagem = 'Negociações da semana anterior obtida com sucesso'
+        }))
+        .catch( err => this._mensagem.texto = err ) 
+
+
+        service.obterNegociacaoDaSemanaRetrasada()
+        .then( negociacoes => negociacoes.forEach( negociacao => {            this._listaNegociacoes.adiciona(negociacao) 
+            this._mensagem = 'Negociações da semana retrasada obtida com sucesso'
+        }))
+        .catch( err => this._mensagem.texto = err ) 
+*/
 
 
       /* Minha solução para o problema do Mês
