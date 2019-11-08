@@ -3,6 +3,7 @@ import 'materialize-css/dist/css/materialize.min.css'
 import './App.css';
 
 // COMPONENTS
+import Header from './components/Header/Header'
 import Tabela from './components/tabela/Tabela'
 import Form from './components/Formulario/Formulario'
 
@@ -58,8 +59,14 @@ escutadorDeSubmit = autor => {
 
     return (
       <Fragment>
-        <Tabela autores={this.state.autores} removeAutor={this.removeAutor} />
-        <Form escutadorDeSubmit={this.escutadorDeSubmit} />
+        <Header />
+        <div className="container">
+          <Form escutadorDeSubmit={this.escutadorDeSubmit} />
+        </div>
+        <div className="container">
+          <Tabela autores={this.state.autores} removeAutor={this.removeAutor} />  
+        </div>
+        
       </Fragment>
     );
 

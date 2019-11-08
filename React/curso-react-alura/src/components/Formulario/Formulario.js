@@ -38,43 +38,50 @@ export default class Formulario extends Component {
         const { nome, livro, preco } = this.state
 
         return(
-            <form>
+            <form >
+                <div className="row">
+                    <div className="input-field col s4 active">
+                        <label htmlFor="nome">Nome</label>
+                        <input
+                            className="validate"
+                            id="nome"
+                            type="text"
+                            name="nome"
+                            value={nome}
+                            onChange={this.escutadorDeInput }
+                            />
+                    </div>
+                    <div className="input-field col s4">
+                        <label htmlFor="livro">Livro</label>
+                        <input
+                            className="validate"
+                            id="livro"
+                            type="text"
+                            name="livro"
+                            value={livro}
+                            onChange={this.escutadorDeInput }
+                            />
+                    </div>
+                    <div className="input-field col s4">
+                        <label htmlFor="preco">Preço</label>
+                        <input
+                            className="validate"
+                            id="preco"
+                            type="text"
+                            name="preco"
+                            value={preco}
+                            onChange={this.escutadorDeInput }
+                            />
+                    </div>
 
-                <label htmlFor="nome">Nome</label>
-                <input
-                    id="nome"
-                    type="text"
-                    name="nome"
-                    value={nome}
-                    onChange={this.escutadorDeInput }
-                    />
-
-                <label htmlFor="livro">Livro</label>
-                <input
-                    id="livro"
-                    type="text"
-                    name="livro"
-                    value={livro}
-                    onChange={this.escutadorDeInput }
-                    />
-
-
-                <label htmlFor="preco">Preço</label>
-                <input
-                    id="preco"
-                    type="text"
-                    name="preco"
-                    value={preco}
-                    onChange={this.escutadorDeInput }
-                    />
-
-
-                <button 
-                    type="button"
-                    onClick={this.submitFormulario}
-                
-                >Salvar
-                </button>
+                        <button 
+                            type="button"
+                            className="waves effect waves light btn deep-purple valign-wrapper"
+                            onClick={this.submitFormulario}
+                        
+                        >Salvar
+                        </button>
+                </div>
             </form>
         )
     }
