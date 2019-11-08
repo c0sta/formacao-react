@@ -24,7 +24,7 @@ let NegociacaoService = class NegociacaoService {
 
     obtemNegociacoesDaSemana() {
 
-        return this._http.get('http://localhost:3000/negociacoes/semana').then(dados => dados.map(objeto => new __WEBPACK_IMPORTED_MODULE_1__Negociacao_js__["a" /* Negociacao */](new Date(objeto.data), objeto.quantidade, objeto.valor)), err => {
+        return this._http.get(`${"http://localhost:3000"}/negociacoes/semana`).then(dados => dados.map(objeto => new __WEBPACK_IMPORTED_MODULE_1__Negociacao_js__["a" /* Negociacao */](new Date(objeto.data), objeto.quantidade, objeto.valor)), err => {
 
             throw new __WEBPACK_IMPORTED_MODULE_2__util_ApplicationException_js__["a" /* ApplicationException */]('Não foi possível obter as negociações da semana');
         });
@@ -32,7 +32,7 @@ let NegociacaoService = class NegociacaoService {
 
     obtemNegociacoesDaSemanaAnterior() {
 
-        return this._http.get('http://localhost:3000/negociacoes/anterior').then(dados => dados.map(objeto => new __WEBPACK_IMPORTED_MODULE_1__Negociacao_js__["a" /* Negociacao */](new Date(objeto.data), objeto.quantidade, objeto.valor)), err => {
+        return this._http.get(`${"http://localhost:3000"}/negociacoes/anterior`).then(dados => dados.map(objeto => new __WEBPACK_IMPORTED_MODULE_1__Negociacao_js__["a" /* Negociacao */](new Date(objeto.data), objeto.quantidade, objeto.valor)), err => {
 
             throw new __WEBPACK_IMPORTED_MODULE_2__util_ApplicationException_js__["a" /* ApplicationException */]('Não foi possível obter as negociações da semana anterior');
         });
@@ -40,7 +40,7 @@ let NegociacaoService = class NegociacaoService {
 
     obtemNegociacoesDaSemanaRetrasada() {
 
-        return this._http.get('http://localhost:3000/negociacoes/retrasada').then(dados => dados.map(objeto => new __WEBPACK_IMPORTED_MODULE_1__Negociacao_js__["a" /* Negociacao */](new Date(objeto.data), objeto.quantidade, objeto.valor)), err => {
+        return this._http.get(`${"http://localhost:3000"}/negociacoes/retrasada`).then(dados => dados.map(objeto => new __WEBPACK_IMPORTED_MODULE_1__Negociacao_js__["a" /* Negociacao */](new Date(objeto.data), objeto.quantidade, objeto.valor)), err => {
             throw new __WEBPACK_IMPORTED_MODULE_2__util_ApplicationException_js__["a" /* ApplicationException */]('Não foi possível obter as negociações da semana retrasada');
         });
     }

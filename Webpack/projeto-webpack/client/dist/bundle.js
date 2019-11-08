@@ -448,7 +448,7 @@ const config = {
     body
 };
 
-fetch('http://localhost:3000/negociacoes', config).then(() => console.log('Dado enviado com sucesso'));
+fetch(`${"http://localhost:3000"}/negociacoes`, config).then(() => console.log('Dado enviado com sucesso'));
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
