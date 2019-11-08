@@ -1,4 +1,5 @@
 import React,{Component, Fragment} from 'react';
+import 'materialize-css/dist/css/materialize.min.css'
 import './App.css';
 
 // COMPONENTS
@@ -60,7 +61,7 @@ escutadorDeSubmit = autor => {
         <Tabela autores={this.state.autores} removeAutor={this.removeAutor} />
         <Form escutadorDeSubmit={this.escutadorDeSubmit} />
       </Fragment>
-            );
+    );
 
   }
 }
