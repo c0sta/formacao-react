@@ -94,7 +94,7 @@ export default class Formulario extends Component {
             <form >
                 <div className="row">
                     <div className="input-field col s4">
-                        <label htmlFor="nome">Nome</label>
+                        <label htmlFor="nome">Autor</label>
                         <input
                             className="validate"
                             id="nome"
@@ -105,6 +105,7 @@ export default class Formulario extends Component {
                             />
                             
                     </div>
+
                     <div className="input-field col s4">
                         <label htmlFor="livro">Livro</label>
                         <input
@@ -128,14 +129,16 @@ export default class Formulario extends Component {
                             />
                     </div>
 
-                        <button 
-                            type="button"
-                            className="waves effect waves light btn deep-purple valign-wrapper"
-                            onClick={this.submitFormulario}
-                        
-                        >Salvar
-                        </button>
+                    <button 
+                        type="button"
+                        className="waves-effect waves-light btn green right"
+                        onClick={this.submitFormulario}
+                    >   
+                        <i className="material-icons left">add</i>
+                        <text>Adicionar</text>
+                    </button>
                 </div>
+                
             </form>
         )
     }

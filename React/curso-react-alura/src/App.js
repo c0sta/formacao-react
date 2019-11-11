@@ -60,7 +60,6 @@ escutadorDeSubmit = autor => {
     return (
       <Fragment>
         <Header />
-       
         <div className="container">
           <Form escutadorDeSubmit={this.escutadorDeSubmit} />
         </div>
