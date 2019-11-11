@@ -102,7 +102,7 @@ export default class Formulario extends Component {
                             name="nome"
                             value={nome}
                             onChange={this.escutadorDeInput }
-                            />
+                        />
                             
                     </div>
 
@@ -115,7 +115,7 @@ export default class Formulario extends Component {
                             name="livro"
                             value={livro}
                             onChange={this.escutadorDeInput }
-                            />
+                        />
                     </div>
                     <div className="input-field col s4">
                         <label htmlFor="preco">Preço</label>
@@ -126,7 +126,7 @@ export default class Formulario extends Component {
                             name="preco"
                             value={preco}
                             onChange={this.escutadorDeInput }
-                            />
+                        />
                     </div>
 
                     <button 
@@ -135,7 +135,7 @@ export default class Formulario extends Component {
                         onClick={this.submitFormulario}
                     >   
                         <i className="material-icons left">add</i>
-                        <text>Adicionar</text>
+                        Adicionar
                     </button>
                 </div>
                 

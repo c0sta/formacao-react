@@ -40,7 +40,6 @@ class NegociacaoService {
                     )))
             })
             .catch( erro => {
-                console.log(erro)
                 reject('Não foi possível obter as negociações da semana anterior')
             })
 

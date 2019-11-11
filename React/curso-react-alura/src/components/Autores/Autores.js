@@ -1,41 +1,52 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, Component } from 'react'
 import Header from '../Header/Header'
+import Api from '../../services/Api'
+import PopUp from '../PopUp/PopUp'
 
-const Autores = () => {
-    const autores = [
-        { 
-          nome: 'Paulo',
-          livro: 'React',
-          preco: '1000'
-        },
-        {
-          nome: 'Daniel',
-          livro: 'Java',
-          preco: '99'
-        },
-        {
-          nome: 'Marcos',
-          livro: 'Design',
-          preco: '150'
-        },
-        {
-          nome: 'Bruno',
-          livro: 'DevOps',
-          preco: '100'
+export default class Autores extends Component {
+    
+    constructor(props){
+      super(props)
+      this.state = {
+        nomes: [],
+        titulo: 'Autores'
+      }
+    }
+
+    componentDidMount(){
+      Api.ListaNomes()
+      .then( res => Api.TrataErros(res) )
+      .then( res => {
+        if(res.message === 'success'){
+          this.setState({
+            nomes: [...this.state.nomes, ...res.data]
+          })
+          PopUp.exibeMensagem('success', 'Sucesso ao listar os autores')
         }
-      ]
-    return(
+        
+      })
+      .catch(
+        err => PopUp.exibeMensagem('error', 'Falha na comunicação com a API ao listar os autores')
+      )
+    }
+
+    render(){
+      return(
         <Fragment>
             <Header />
             <div className="container">
+                
                 <h1 className="center">Autores</h1>
+                
                 <table>
-                    <thead style={{fontSize: '20px',fontWeight: 'bold'}}>Autores</thead>
+                    <thead style={{fontSize: '20px',fontWeight: 'bold'}}>
+                        Autores
+                    </thead>
                     <tbody>
                         {
-                            autores.map( autor => 
-                            (  <tr>
-                            <td>{autor.nome}</td>
+                            this.state.nomes.map( autor => 
+                            (  <tr key={autor.id}>
+                                    <td>{autor.nome}</td>
                                 </tr>
                             ))
                         }            
@@ -43,6 +54,6 @@ const Autores = () => {
                 </table>
             </div>
         </Fragment>
-     )
+      )
+    }
 }
-export default Autores

@@ -5,9 +5,9 @@ const Header = () => {
 
     return(
         <nav>
-            <div class="nav-wrapper deep-purple">
-                <Navigate to="/" activeStyle={{backgroundColor: '#673ab7'}} class="brand-logo">Casa do Código</Navigate>
-                <ul class="right">
+            <div className="nav-wrapper deep-purple">
+                <Navigate to="/" activeStyle={{backgroundColor: '#673ab7'}} className="brand-logo">Casa do Código</Navigate>
+                <ul className="right">
                     <li><Navigate to="/autores"> Autores </Navigate></li>
                     <li><Navigate to="/livros"> Livros </Navigate></li>
                     <li><Navigate to="/precos"> Preços </Navigate></li>
